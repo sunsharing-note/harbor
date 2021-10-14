@@ -31,8 +31,9 @@ func GetProject(url string) []map[string]string {
 		TLSClientConfig: &tls.Config{InsecureSkipVerify: true},
 	}
 	client := &http.Client{Timeout: 10 * time.Second, Transport: tr}
+	//client := &http.Client{Timeout: 10 * time.Second}
 	request.Header.Set("accept", "application/json")
-	//request.SetBasicAuth(username, password)
+	request.SetBasicAuth("admin", "Harbor12345")
 	response, err := client.Do(request)
 
 	if err != nil {
@@ -41,6 +42,7 @@ func GetProject(url string) []map[string]string {
 	}
 
 	body, _ := ioutil.ReadAll(response.Body)
+	fmt.Println(string(body))
 	defer response.Body.Close()
 	ret := PData{}
 	json.Unmarshal([]byte(string(body)), &ret)

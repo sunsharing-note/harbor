@@ -5,13 +5,15 @@ a tool which developed by golang
 ##### How to use
 cautions: In my opinion，this is just a trial run.so if you want to use
 this tool to delete your harbor's image,you should do many tests first. 
-You can follow the steps below：
+In addition，You can follow the steps below to delete images：
 1. clone the code by following command
 
 `git clone git clone https://github.com/sunsharing-note/harbor.git` 
+
 2. compile
 
 `go build -o harbor .`
+
 3. get help
 
 ```

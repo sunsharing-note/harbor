@@ -23,7 +23,6 @@ type ProjectData struct {
 type PData []ProjectData
 
 func GetProject(url string) []map[string]string {
-	// curl -X GET "https://zhouhua.zaizai.com/api/v2.0/projects" -H "accept: application/json"
 	url = url + "/api/v2.0/projects"
 	//url = url + "/api/projects"
 	request, _ := http.NewRequest(http.MethodGet, url,nil)
@@ -42,7 +41,6 @@ func GetProject(url string) []map[string]string {
 	}
 
 	body, _ := ioutil.ReadAll(response.Body)
-	fmt.Println(string(body))
 	defer response.Body.Close()
 	ret := PData{}
 	json.Unmarshal([]byte(string(body)), &ret)

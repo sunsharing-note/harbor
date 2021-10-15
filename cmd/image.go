@@ -29,8 +29,11 @@ var tagLsCmd = &cobra.Command{
 		project, _ := cmd.Flags().GetString("project")
 		repo, _ := cmd.Flags().GetString("repo")
 		ss := harbor.GetTags(url, project, repo)
+		for i := 0; i < len(ss); i++ {
+			count, _ := strconv.Atoi((ss[i])["count"])
+			fmt.Printf("the repo %s has %d images\n", repo, count)
+		}
 
-		fmt.Println(ss)
 	},
 }
 

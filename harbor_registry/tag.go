@@ -61,7 +61,7 @@ func DelTags(url string, project string, repo string, tag string) (int, map[stri
 	}
 	client := &http.Client{Timeout: 10 * time.Second, Transport: tr}
 	request.Header.Set("accept", "application/json")
-	//request.SetBasicAuth("admin", "Pwd123456")
+	request.SetBasicAuth("admin", "Harbor12345")
 	response,_ := client.Do(request)
 	defer response.Body.Close()
 
@@ -89,7 +89,6 @@ type ArtiData struct {
 type AData []ArtiData
 
 func GetTags(url string, project string, repo string) []map[string]string {
-	// https://zhouhua.zaizai.com/api/v2.0/projects/goharbor/repositories/harbor-db/artifacts?
 	url = url + "/api/v2.0/projects/" + project + "/repositories/" + repo + "/artifacts"
 	request, _ := http.NewRequest(http.MethodGet, url,nil)
 	tr := &http.Transport{
@@ -98,7 +97,7 @@ func GetTags(url string, project string, repo string) []map[string]string {
 	client := &http.Client{Timeout: 10 * time.Second, Transport: tr}
 	request.Header.Set("accept", "application/json")
 	request.Header.Set("X-Accept-Vulnerabilities", "application/vnd.scanner.adapter.vuln.report.harbor+json; version=1.0")
-	//request.SetBasicAuth("admin", "Pwd123456")
+	request.SetBasicAuth("admin", "Harbor12345")
 	response, err := client.Do(request)
 
 	if err != nil {
@@ -113,6 +112,7 @@ func GetTags(url string, project string, repo string) []map[string]string {
 	var ps = []map[string]string{}
 	sum := 0
 	RData := make(map[string]string)
+	RData["name"] = repo
 	for i := 0; i < len(ret); i++ {
 
 		RData["id"] = (strconv.Itoa(ret[i].Id))

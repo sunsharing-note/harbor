@@ -28,7 +28,7 @@ func GetRepoData(url string, proj string)  []map[string]string {
 	}
 	client := &http.Client{Timeout: 10 * time.Second, Transport: tr}
 	request.Header.Set("accept", "application/json")
-	//request.SetBasicAuth("admin", "Pwd123456")
+	request.SetBasicAuth("admin", "Harbor12345")
 	response, err := client.Do(request)
 
 	if err != nil {

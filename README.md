@@ -8,7 +8,7 @@ this tool to delete your harbor's image,you should do many tests first.
 In addition，You can follow the steps below to delete images：
 1. clone the code by following command
 
-`git clone git clone https://github.com/sunsharing-note/harbor.git` 
+`git clone https://github.com/sunsharing-note/harbor.git` 
 
 2. compile
 
